@@ -1,0 +1,59 @@
+<!-- 1. OR operator || :- In classical programming, the logical OR is meant to manipulate boolean values only. If any of its arguments are "true", it returns "true", otherwise it returns "false". ( In Javascript, The followinf values are considered falsy. Null,Undefined,""(empty value.),false,0 And NAN. (Also same in OR || operator.) )
+
+e.g.1 - 
+        alert( true || true );   // Output = true
+        alert( false || true );  // Output = true
+        alert( true || false );  // Output = true
+        alert( false || false ); // Output = false
+
+         -->
+
+<!-- 2. Nullish coalescing operator '??' :- It treats null and undefined similarly, we’ll use a special term here, in this article. For brevity, we’ll say that a value is “defined” when it’s neither "null nor undefined".
+
+e.g.1 - if a is "defined" then a.
+     - if a isn't "defined" then b.
+
+e.g.2
+   (    let user;
+
+alert(user ?? "Anonymous"); // Output = Anonymous. (bcz user is undefined)
+    )
+
+e.g.3
+   (  let user = "john"
+
+alert (user ?? "Anonymous"); // Output = "john". (bcz user is defined)
+) -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operators</title>
+  </head>
+  <body>
+    <script>
+      // OR operator.
+
+    //   alert(true || false);
+    //   alert(true || true);
+    //   alert(false || false);
+    //   alert(false || true);
+
+    // Nullish coelscing operator.
+
+    // let hours = null;
+    // let days = false;
+
+
+    // alert(hours ?? days)
+
+    let hour = 9;
+
+if (hour < 10 || hour > 18) {
+  alert( 'The office is closed.' );
+}
+    </script>
+  </body>
+</html>
