@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form-task</title>
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+  <body>
+    <form id="myForm">
+      <input
+        type="text"
+        name="fname"
+        id="firstName"
+        placeholder="Firstname"
+      /><br />
+      <span id="fnameError" class="error"></span><br />
+      <input
+        type="text"
+        name="lname"
+        id="lastName"
+        placeholder="Lastname"
+      /><br />
+      <span id="lnameError" class="error"></span><br />
+      <input type="email" name="email" id="Email" placeholder="Emal" /><br />
+      <span id="emailError"></span><br />
+      <input
+        type="text"
+        name="phone"
+        id="phoneNumber"
+        placeholder="PhoneNumber"
+      /><br />
+      <span id="phoneError" class="error"></span><br />
+      <select name="gender" id="Gender">
+        <option disabled selected value="">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option></select
+      ><br />
+      <span id="genderError" class="error"></span><br />
+      <input
+        type="text"
+        name="address"
+        id="Address"
+        placeholder="Address"
+      /><br />
+      <span id="addError" class="error"></span><br />
+      <input type="date" name="date" id="Date" placeholder="Date" /><br />
+      <span id="dateError"></span><br />
+      <input type="text" name="title" id="Title" placeholder="Title" /><br />
+      <span id="titleError" class="error"></span><br />
+      <input type="text" name="exprc" id="Exprc" placeholder="Exprc" /><br />
+      <span id="exprcError" class="error"></span><br />
+      <button type="button" value="Submit" onclick="dataInLocal()">
+        Submit</button
+      ><br />
+      <button id="btn" type="reset">Reset</button>
+    </form>
+    <table id="Table">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phonenumber</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Exprc</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </body>
+  <script src="index.js"></script>
+</html>
