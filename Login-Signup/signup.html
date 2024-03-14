@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Signup form</h2>
+        <form id="users" >
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" >
+            <span id="nameError" class="error"></span>
+          </div><br>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" >
+            <span id="emailError" class="error"></span>
+          </div><br>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="psw" placeholder="Enter password" name="pwd" >
+            <span id="passwordError" class="error"></span>
+          </div><br>
+          <div class="form-group">
+            <label for="pwd">Role:</label>
+            <select name="role" id="role" >
+                <option disabled selected value >Select</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+                <span id="roleError" class="error"></span>
+            </select>
+          </div><br>
+          <div class="form-group">
+            <label for="pwd">Gender:</label>
+            <select name="gender" id="gender" >
+                <option disabled selected value >Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <span id="genderError" class="error"></span>
+            </select>
+            </div><br>
+         
+          <button type="button" onclick="saveData()" id="save_btn" class="btn btn-default">Submit</button>
+          <button type="button" onclick="window.location.href = 'login.html';" id="btn" class="btn btn-default">Login</button>
+        </form>
+      </div>
+      <script src="signup.js"></script>
+</body>
+</html>
