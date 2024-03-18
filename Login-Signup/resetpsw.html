@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset-Password</title>
+    <link rel="stylesheet" href="resetpsw.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Reset form</h2>
+        <form id="New-Pass">    
+          <div class="form-group">
+            <label for="password">New-Password:</label>
+            <input type="password" class="form-control" id="newPass" placeholder="Enter New-Password" name="password" required>
+            <span id="newPassError" class="errorMsg"></span>
+          </div><br>
+          
+          <button type="button" onclick="checkPass()" id="confirmPassSave" class="button">Save</button>
+        </form>
+      </div>
+</body>
+<script src="resetpsw.js"></script>
+</html>
