@@ -1,0 +1,29 @@
+
+
+li{
+    list-style-type: none;
+}
+
+ul{
+    gap: 34px;
+}
+
+
+
+.loginButton{
+    background-color: yellowgreen;
+    color: white;
+
+
+}
+
+.loginButton:hover{
+    background-color: rgb(94, 134, 15);
+    color: white;
+}
+
+.bg-body-tertiary{
+    background-color: #ffffff !important;
+}
+
+
