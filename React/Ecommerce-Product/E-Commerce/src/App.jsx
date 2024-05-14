@@ -1,12 +1,12 @@
-import Navbar from "./components/Navbar";
-import ProductList from "./components/ProductList";
+import Navbar from "./components/Navbar/Navbar";
+import ProductList from "./components/Product/ProductList";
 import "bootstrap/dist/css/bootstrap.min.css";
-import View from "./Pages/View";
-import AddToCart from "./Pages/AddToCart";
-import CheckOut from "./Pages/CheckOut";
-import PlaceOrder from "./Pages/PlaceOrder";
+import View from "./Pages/View/View";
+import AddToCart from "./Pages/Cart/AddToCart";
+import CheckOut from "./Pages/Checkout/CheckOut";
+import PlaceOrder from "./Pages/PlaceOrder/PlaceOrder";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Pages/Login";
+import Login from "./Pages/Login/Login";
 
 function App() {
   return (

@@ -1,89 +1,21 @@
-/* eslint-disable react/no-unescaped-entities */
-import { useState, useEffect } from "react";
+/* eslint-disable react/no-unescaped-entities */  
 import { Link } from "react-router-dom";
 import "./Productlist.css";
-import Navbar from "./Navbar";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import Dropdown from "react-bootstrap/Dropdown";
+import useProductList from "./useProductList";
 
 const ProductList = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [products, setProduts] = useState([]);
-  const [error, setError] = useState(null);
-  const [cartcount, setCartCount] = useState([]);
-  const [searchquery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
+  const [
+    { cartcount, isLoading, searchquery },
+    { handleClick, filteredProducts, handleClickSearch },
+  ] = useProductList();
+  console.log(cartcount);
 
-  useEffect(() => {
-    // fetch data from API.
-    const fetchProductData = async () => {
-      try {
-        setIsLoading(true);
-        let ProductData = await fetch("https://fakestoreapi.com/products");
-
-        if (!ProductData.ok) {
-          throw new error("Network response was not ok!");
-        }
-        let Data = await ProductData.json();
-        setProduts(Data);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    fetchProductData();
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || []; // to update cartIcon
-    if (cartItems.length == 0) {
-      setCartCount((cartItems.length = "")); // validation for cart length if 0 then empty.
-    } else {
-      setCartCount(cartItems.length);
-    }
-  }, []);
-
-  let addToCart = (product) => {
-    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-
-    const checkProductIndex = cartItems.findIndex(
-      // find product index
-      (productItem) => productItem.id === product.id
-    );
-
-    if (checkProductIndex !== -1) {
-      const updateCartItems = [...cartItems];
-      updateCartItems[checkProductIndex].quantity += 1;
-      localStorage.setItem("cart", JSON.stringify(updateCartItems)); // validation for not storing duplicate values.
-    } else {
-      const updateCartItems = [...cartItems, { ...product, quantity: 1 }];
-      localStorage.setItem("cart", JSON.stringify(updateCartItems)); //  store data in localstorage
-    }
-    setCartCount(cartItems.length + 1);
-    toast.success("Product is added to the cart");
-  };
-  let loginUser = JSON.parse(localStorage.getItem("users")); // get login info from localstorage
-  let isLoggedIn =
-    loginUser?.firstName === "mor_2314" && loginUser?.password === "83r5^_"; // set login info to isLoggedIn
-
-  let filteredProducts = products.filter((cartproduct) =>
-    cartproduct.title.toLowerCase().includes(searchquery.toLowerCase())
-  ); // filter product nd use includes to check if array contains a specified value
-
-
-  // const click = () => {
-  // }
-  
-  const handleClick = (product) => {
-
-    if (!isLoggedIn) {
-      navigate('/login');
-    } else {
-      addToCart(product);
-      console.log(product);
-    }
-  }
   return (
     <div>
-      <div style={{ textAlign: "center" }}> 
-        {isLoading ? <p>Loading</p> : null}
+      <div style={{ textAlign: "center" }}>
+        {isLoading ? <p>Loading...</p> : null}
       </div>
       <>
         <Navbar />
@@ -101,7 +33,9 @@ const ProductList = () => {
               placeholder="Search"
               className="form-control py-2"
               value={searchquery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                handleClickSearch(e);
+              }}
               type="search"
               id="example-search-input"
             />
@@ -128,6 +62,29 @@ const ProductList = () => {
               />
             </Link>
           </div>
+          <Dropdown>
+            <Dropdown.Toggle
+              style={{
+                backgroundColor: "grey",
+                color: "white",
+                height: "auto",
+                float: "right",
+              }}
+              id="dropdown-basic"
+            >
+              Dropdown Button
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item>Men</Dropdown.Item>
+              <Dropdown.Item>Women</Dropdown.Item>
+              <Dropdown.Item>Price: High-Low</Dropdown.Item>
+              <Dropdown.Item>Price: Low-High</Dropdown.Item>
+              <Dropdown.Item>Jewellery</Dropdown.Item>
+              <Dropdown.Item>Electronic</Dropdown.Item>
+              <Dropdown.Item>Customer Rating</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </nav>
 
         <div className="container" style={{ paddingLeft: "90px" }}>
@@ -135,7 +92,7 @@ const ProductList = () => {
             <div
               className="datacontainer"
               style={{
-                height: "100px",
+                height: "200px",
                 width: "1600px",
                 textAlign: "center",
                 backgroundColor: "white",
@@ -166,13 +123,12 @@ const ProductList = () => {
                     </Link>
                   </div>
                   <div style={{ padding: "2px 13px" }}>
-                    <h6 style={{ color: "black" }}>
+                    <h6>{product.rating.rate}⭐</h6>
+                    <h6>
                       <b>{product.category}</b>
                     </h6>
-                    <h6 style={{ color: "black" }} className="card-title">
-                      {product.title}
-                    </h6>
-                    <h6 style={{ color: "black" }}>
+                    <h6 className="card-title">{product.title}</h6>
+                    <h6>
                       <b>₹{product.price}</b>
                     </h6>
                   </div>
